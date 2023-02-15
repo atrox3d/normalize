@@ -1,0 +1,9 @@
+/venv/
+/.idea/
+/private/
+/secret/
+/files/
+/build/
+/dist/
+/gui.spec
+__pycache__/
