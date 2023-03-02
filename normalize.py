@@ -31,7 +31,10 @@ text = text.lower()
 
 # first rule, converto to a dash every char of this string
 dash = "-"
-to_dash = " ,;:"
+to_dash = " "
+
+doubledash = "--"
+to_doubledash = ",;:"
 
 # second rule, converto to dot every combination of dot-dash
 dot = "."
@@ -41,11 +44,16 @@ to_dot = [".-"]  # this is considered as one
 nothing = ""
 to_nothing = "()[]{}"
 
+_and = "-and-"
+to_and = "&"
+
 # dictionary of rules
 substitutions = {
     dash: to_dash,
+    doubledash: to_doubledash,
     dot: to_dot,
     nothing: to_nothing,
+    _and: to_and,
 }
 # add custom rules from command line
 for target, replace in rules:
@@ -59,7 +67,7 @@ for replace, targets in substitutions.items():
         text = text.replace(target, replace)
 
 # last touch: remove multiple dashes
-while "--" in text:
+while "---" in text:
     text = text.replace("--", "-")
 
 # prints the final string, ready to be processed by the shell
